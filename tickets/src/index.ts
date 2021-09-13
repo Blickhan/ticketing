@@ -6,6 +6,8 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {
+  console.log('Starting...');
+
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
@@ -43,13 +45,13 @@ const start = async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
     });
-    console.log('Connected to MongoDB!');
+    console.log('Connected to MongoDB');
   } catch (err) {
     console.error(err);
   }
 
   app.listen(3000, () => {
-    console.log('Listening on port 3000!');
+    console.log('Listening on port 3000');
   });
 };
 
