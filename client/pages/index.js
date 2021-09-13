@@ -1,7 +1,6 @@
-import buildClient from '../api/build-client';
 import Link from 'next/link';
 
-const Landing = ({ currentUser, tickets }) => {
+const Landing = ({ tickets }) => {
   const ticketList = tickets.map((ticket) => {
     return (
       <tr key={ticket.id}>
@@ -33,7 +32,7 @@ const Landing = ({ currentUser, tickets }) => {
   );
 };
 
-Landing.getInitialProps = async (context, client, currentUser) => {
+Landing.getInitialProps = async (context, client) => {
   const { data } = await client.get('/api/tickets');
 
   return { tickets: data };
